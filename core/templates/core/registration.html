@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block name%}
+Регистрация
+{% endblock %}
+{% block content %}
+<div class="col-md-3 col-md-offset-5 post">
+<h1>Регистрация</h1>
+        <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+
+                <input type="submit" class="btn btn-primary" value="Зарегистироваться">
+        </form>
+</div>
+{% endblock %}

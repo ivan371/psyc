@@ -1,0 +1,85 @@
+html {
+    background: #e6e6e6;
+    padding: 0px;
+}
+.main{
+  width: 1024px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+  background: white;
+   min-height: 300px;
+   position: absolute;
+   left: calc(50% - 512px);
+   top: 0px;
+}
+.head{
+  background-color: #5BF236;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+.head span {
+    position: absolute;
+    right: 20px;
+    top: 9px;
+}
+.button {
+  background-color: #5BF236;
+  outline: none;
+  height: 35px;
+  color: white;
+  font-size: 16px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 65px;
+  padding-right: 65px;
+  margin: 6px;
+}
+.button:hover{
+    background: #4A90E2;
+    cursor: pointer;
+}
+.navigation {
+    background: url(../img/bg.jpg);
+    width: 100%;
+    height: 250px;
+}
+.links{
+    width: 640px;
+    float: right;
+    margin-top: 30px;
+}
+.links div {
+  display: inline-block;
+  width: 288px;
+  height: 50px;
+  background-color: #5BF236;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  margin-bottom: 13px;
+  margin-right: 20px;
+  line-height: 49px;
+}
+.links div:hover{
+    background: #4A90E2;
+    cursor: pointer;
+}
+.text {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+.bread{
+    padding-top: 20px;
+}
+.bread h2{
+    display: inline;
+}
+.bread span {
+    float: right;
+    margin-top: -15px;
+}
+.about {
+  margin-top: 30px;
+}

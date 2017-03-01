@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %}
+Вход
+{% endblock %}
+{% block name%}
+Вход
+{% endblock %}
+{% block content %}
+
+<div class="col-md-3 col-md-offset-5 post">
+    <form method="post">
+        {% csrf_token %}
+    {{ form}}
+       <input type="submit" class="button" value="Войти">
+    {{ form.errors }}
+    </form>
+</div>
+{% endblock %}
