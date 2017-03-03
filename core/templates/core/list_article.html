@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Мои статьи
+{% endblock %}
+
+{% block name%}
+Мои статьи
+{% endblock %}
+{% block content %}
+{% for p in post %}
+{{p.title}}
+{% for a in p.textart_set.all %}
+<br>
+{{a.text}}
+{% endfor %}
+{% endfor %}
+{% endblock %}

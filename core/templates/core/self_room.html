@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block name%}
+Личный кабиент
+{% endblock %}
+{% block content %}
+<div class="col-md-4 col-md-offset-1">
+<h3>Здравствуйте, {{user.username}}</h3>
+   <h3>Ваши данные:</h3>
+   {% if user.avatar %}
+   <img class="avatar"src="{{ user.avatar.url }}" width="200px">
+   {% endif %}
+   <p>{{user.first_name}}
+   {{user.last_name}}</p>
+   <p>Рейтинг: {{user.rating}}</p>
+   <p>E-mail: {{user.email}}</p>
+   <p>Город: {{user.city}}</p>
+<a href="{% url 'core:self_update' %}">редактировать</a>
+</div>
+<div class="col-md-4 col-md-offset-3">
+<a href="{% url 'core:list_article' %}">
+ <input type="submit" class="button" value="Мои статьи"></a>
+ <a href="{% url 'core:create_article' %}">
+  <input type="submit" class="button" value="Создать статью"></a>
+</div>
+{% endblock %}

@@ -30,9 +30,8 @@ html {
   font-size: 16px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 65px;
-  padding-right: 65px;
   margin: 6px;
+  width: 190px;
 }
 .button:hover{
     background: #4A90E2;
@@ -83,3 +82,5 @@ html {
 .about {
   margin-top: 30px;
 }
+.helptext {
+display: none;}

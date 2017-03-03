@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Создать статью
+{% endblock %}
+
+{% block name%}
+Создать статью
+{% endblock %}
+{% block content %}
+<form method="post" action="">
+{% csrf_token %}
+<h3>Название</h3>
+{{form.title}}
+{{form.content}}
+<input type="submit" class="button" value="Создать">
+</form>
+{% endblock %}
