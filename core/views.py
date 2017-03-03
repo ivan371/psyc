@@ -1,9 +1,9 @@
 #coding: utf8
 from django.shortcuts import render, reverse
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, View
 from core.models import User
 from core.forms import RegistrationForm, CkEditorForm
-from article.models import Article, Entry
+from article.models import Entry
 from django.views import generic
 
 def home(request):
@@ -34,13 +34,25 @@ class Self_update(UpdateView):
 
 class List_article(ListView):
     template_name = 'core/list_article.html'
-    context_object_name = 'post'
-    model = Article
+    model = Entry
+
+    def dispatch(self, request, pk=None, *args, **kwargs):
+         self.post = Entry.objects.filter(user=self.request.user)
+         return super(List_article, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+         context = super(List_article, self).get_context_data(**kwargs)
+         context['post'] = self.post
+         return context
 
 class Create_article(CreateView):
     template_name = 'core/create_article.html'
     model = Entry
     fields = ['title', 'content',]
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(Create_article, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('core:self_room')

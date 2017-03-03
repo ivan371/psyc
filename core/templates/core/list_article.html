@@ -9,10 +9,7 @@
 {% endblock %}
 {% block content %}
 {% for p in post %}
-{{p.title}}
-{% for a in p.textart_set.all %}
-<br>
-{{a.text}}
-{% endfor %}
+<h3>{{p.title}}</h3>
+{{p.content|safe}}
 {% endfor %}
 {% endblock %}
