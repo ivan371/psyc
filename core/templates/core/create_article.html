@@ -8,6 +8,7 @@
 Создать статью
 {% endblock %}
 {% block content %}
+{% if user.is_psycologist %}
 <div class="post">
 <form method="post" action="">
 {% csrf_token %}
@@ -18,4 +19,7 @@
 <input type="submit" class="button" value="Создать">
 </form>
 </div>
+{% else%}
+<h3>Извините, вы не являетесь психологом</h3>
+{% endif %}
 {% endblock %}

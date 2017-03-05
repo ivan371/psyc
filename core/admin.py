@@ -7,13 +7,13 @@ from core.models import User, Psycologist, Client, Subscription
 class UserAdmin(BaseUserAdmin):
 
     fieldsets = (
-        ('User info', {'fields': ('username', 'password', 'first_name', 'last_name', 'email', 'rating', 'avatar', 'city')}),
+        ('User info', {'fields': ('username', 'password', 'first_name', 'last_name', 'email', 'rating', 'avatar', 'city', 'number', 'prof')}),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'email', 'first_name', 'last_name', 'is_staff', 'is_superuser', 'avatar', 'rating', 'city'),
+            'fields': ('username', 'password1', 'email', 'first_name', 'last_name', 'is_staff', 'is_superuser', 'avatar', 'rating', 'city', 'number', 'prof'),
         }),
     )
     def admin_avatar(self, instance):

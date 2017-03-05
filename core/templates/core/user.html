@@ -14,4 +14,10 @@
 <h3>{{us.city}}</h3>
 <h3>Рейтинг: {{us.rating}}</h3>
 </div>
+<div class="post col-md-4">
+  <h3>Отзывы</h3>
+  {% for c in us.comment_set.all%}
+    {{c}}
+  {% endfor %}
+</div>
 {% endblock %}

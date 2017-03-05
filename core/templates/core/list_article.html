@@ -8,6 +8,7 @@
 Мои статьи
 {% endblock %}
 {% block content %}
+{% if user.is_psycologist %}
 {% for p in post %}
 <div class="post">
 <h3><center>{{p.title}}</center></h3>
@@ -16,4 +17,7 @@
 </div>
 </div>
 {% endfor %}
+{% else%}
+<h3>Извините, вы не являетесь психологом</h3>
+{% endif %}
 {% endblock %}
