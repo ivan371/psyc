@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block title %}
 Карточка пользователя
@@ -9,13 +10,16 @@
 {% endblock %}
 {% block content %}
 {% for us in u%}
-<a href="../{{us.id}}">
 <div class="post col-md-4">
-<img class="avatar" src="{{us.avatar.url}}">
-<h3>{{us.username}} {{us.first_name}} {{us.last_name}}</h3>
-<h3>{{us.city}}</h3>
-<h3>Рейтинг: {{us.rating}}</h3>
-</div>
+  <div class="sms">
+  <img src = "{% static "img/os.png" %}">
+  </div>
+<a href="../{{us.id}}">
+<img class="avatar" src="{{us.user.avatar.url}}">
 </a>
+<h3>{{us.user.username}} {{us.user.first_name}} {{us.user.last_name}}</h3>
+<h3>{{us.user.city}}</h3>
+<h3>Рейтинг: {{us.user.rating}}</h3>
+</div>
 {%endfor%}
 {% endblock %}

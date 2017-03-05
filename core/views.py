@@ -1,7 +1,7 @@
 #coding: utf8
 from django.shortcuts import render, reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, View
-from core.models import User
+from core.models import User, Psycologist
 from core.forms import RegistrationForm, CkEditorForm
 from article.models import Entry
 from django.views import generic
@@ -65,4 +65,4 @@ class Show_user(DetailView):
 class Show_users(ListView):
     template_name = 'core/psyc.html'
     context_object_name = 'u'
-    model = User
+    model = Psycologist

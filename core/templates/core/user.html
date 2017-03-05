@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block title %}
 Карточка пользователя
@@ -9,6 +10,9 @@
 {% endblock %}
 {% block content %}
 <div class="post col-md-4 col-md-offset-4">
+  <div class="sms">
+  <img src = "{% static "img/os.png" %}">
+  </div>
 <img class="avatar" src="{{us.avatar.url}}">
 <h3>{{us.username}} {{us.first_name}} {{us.last_name}}</h3>
 <h3>{{us.city}}</h3>
@@ -16,8 +20,11 @@
 </div>
 <div class="post col-md-4">
   <h3>Отзывы</h3>
-  {% for c in us.comment_set.all%}
-    {{c}}
+  {% for c in us.psycologist.comment_set.all%}
+    <div class="post">
+      <h4>{{c.author.user}}</h4>
+    <p>{{c.content}}</p>
+  </div>
   {% endfor %}
 </div>
 {% endblock %}
