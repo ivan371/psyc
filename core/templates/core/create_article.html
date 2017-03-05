@@ -8,6 +8,7 @@
 Создать статью
 {% endblock %}
 {% block content %}
+<div class="post">
 <form method="post" action="">
 {% csrf_token %}
 <h3>Название</h3>
@@ -16,4 +17,5 @@
 {{form.content}}
 <input type="submit" class="button" value="Создать">
 </form>
+</div>
 {% endblock %}

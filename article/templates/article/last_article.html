@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Последние статьи
+{% endblock %}
+
+{% block name%}
+Последние статьи
+{% endblock %}
+{% block content %}
+<div class="post col-md-3">
+  Поиск
+</div>
+<div class="col-md-9">
+{% for p in post %}
+<a href="../{{p.user.id}}"><div class="post">
+  <div class="col-md-3">
+  <img class="avatar" src="{{p.user.avatar.url}}">
+</div>
+<div class="col-md-3">
+  <h4>{{p.user.username}}</h4>
+  <h4>{{p.user.first_name}}</h4>
+  <h4>{{p.user.last_name}}</h4>
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-4">
+  <h4>{{p.user.city}}</h4>
+</div>
+</div></a>
+<div class="post">
+<h3><center>{{p.title}}</center></h3>
+<div class="article">
+{{p.content|safe}}
+</div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

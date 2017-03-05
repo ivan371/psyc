@@ -21,7 +21,7 @@ from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^article/', include('article.urls', namespace='article')),
+    url(r'^', include('article.urls', namespace='article')),
     url(r'^message/', include('message.urls', namespace='message')),
     url(r'^', include('core.urls', namespace='core')),
     url(r'^redactor/', include('redactor.urls')),

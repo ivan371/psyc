@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Карточка пользователя
+{% endblock %}
+
+{% block name%}
+Карточка пользователя
+{% endblock %}
+{% block content %}
+{% for us in u%}
+<a href="../{{us.id}}">
+<div class="post col-md-4">
+<img class="avatar" src="{{us.avatar.url}}">
+<h3>{{us.username}} {{us.first_name}} {{us.last_name}}</h3>
+<h3>{{us.city}}</h3>
+<h3>Рейтинг: {{us.rating}}</h3>
+</div>
+</a>
+{%endfor%}
+{% endblock %}

@@ -24,7 +24,7 @@ class Self_room(ListView):
 class Self_update(UpdateView):
     template_name = 'core/self_update.html'
     model = User
-    fields = ('last_name', 'avatar', 'first_name', 'city')
+    fields = ('username', 'first_name', 'last_name', 'avatar', 'first_name', 'city')
 
     def get_success_url(self):
         return reverse('core:self_room')
@@ -37,7 +37,7 @@ class List_article(ListView):
     model = Entry
 
     def dispatch(self, request, pk=None, *args, **kwargs):
-         self.post = Entry.objects.filter(user=self.request.user)
+         self.post = Entry.objects.filter(user=self.request.user).order_by('-id')
          return super(List_article, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -56,3 +56,13 @@ class Create_article(CreateView):
 
     def get_success_url(self):
         return reverse('core:self_room')
+
+class Show_user(DetailView):
+    template_name = 'core/user.html'
+    context_object_name = 'us'
+    model = User
+
+class Show_users(ListView):
+    template_name = 'core/psyc.html'
+    context_object_name = 'u'
+    model = User

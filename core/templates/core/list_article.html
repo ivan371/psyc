@@ -9,7 +9,11 @@
 {% endblock %}
 {% block content %}
 {% for p in post %}
-<h3>{{p.title}}</h3>
+<div class="post">
+<h3><center>{{p.title}}</center></h3>
+<div class="article">
 {{p.content|safe}}
+</div>
+</div>
 {% endfor %}
 {% endblock %}
