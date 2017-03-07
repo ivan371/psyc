@@ -129,4 +129,35 @@ display: none;}
   width: 40%;
   height: 40%;
   background-color: white;
+  border: 1px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px;
+  overflow-y: auto;
+}
+.mess {
+  border: 1px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px;
+  margin: 0 auto;
+  margin-top: 1%;
+  padding: 2px;
+  width: 80%;
+  min-height: 10%;
+  color: white;
+}
+.mess_ps {
+  background-color: #5BF236;
+}
+.mess_cl {
+  background-color: #6C60B6;
+}
+.field_message {
+  width: 80%;
+  border: 1px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.field_message textarea {
+  width: 100%;
+  height: 100;
 }

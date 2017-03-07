@@ -8,6 +8,7 @@
 Личный кабиент
 {% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
 <div class="col-md-3 col-md-offset-5 post">
     <form method="post" enctype="multipart/form-data">
                {% csrf_token %}
@@ -16,4 +17,5 @@
         <input type="submit" class="button" value="Изменить">
       </form>
 </div>
+{% endif%}
 {% endblock %}

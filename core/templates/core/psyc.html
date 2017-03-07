@@ -2,19 +2,20 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block title %}
-Карточка пользователя
+Карточки пользователей
 {% endblock %}
 
 {% block name%}
-Карточка пользователя
+Карточки пользователей
 {% endblock %}
 {% block content %}
+{% if user.is_authenticated%}
 {% for us in u%}
 <div class="post col-md-4">
-  <div class="sms">
+  <div class="sms" data-chatid="../message/{{us.user.id}}">
   <img src = "{% static "img/os.png" %}">
   </div>
-<a href="../{{us.id}}">
+<a href="../{{us.user.id}}">
 <img class="avatar" src="{{us.user.avatar.url}}">
 </a>
 <h3>{{us.user.username}} {{us.user.first_name}} {{us.user.last_name}}</h3>
@@ -22,4 +23,7 @@
 <h3>Рейтинг: {{us.user.rating}}</h3>
 </div>
 {%endfor%}
+{% else%}
+<h2>Извините, вы не аунтефецированы и не можете просмаотривать данную информацию</h2>
+{% endif%}
 {% endblock %}

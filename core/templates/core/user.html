@@ -9,6 +9,7 @@
 Карточка пользователя
 {% endblock %}
 {% block content %}
+{% if user.is_authenticated%}
 <div class="post col-md-4 col-md-offset-4">
   <div class="sms">
   <img src = "{% static "img/os.png" %}">
@@ -27,4 +28,7 @@
   </div>
   {% endfor %}
 </div>
+{% else%}
+<h2>Извините, вы не аунтефецированы и не можете просмаотривать данную информацию</h2>
+{% endif%}
 {% endblock %}

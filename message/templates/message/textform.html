@@ -1,0 +1,8 @@
+{{text}}
+<div class="field_message">
+<form method="post" class="ajax-form" data-dialogcreate="{{id}}"  action="{% url 'message:create' id %}">
+  {% csrf_token %}
+      <textarea name="text"></textarea>
+      <input type="submit" class="button" value="Отправить сообщение">
+</form>
+</div>

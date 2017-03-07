@@ -1,25 +1,22 @@
 $(document).ready(function() {
   $('.sms').click(function(){
+    var id = $(this).data('chatid');
     $('.message').show();
     $('.dialog').show();
-    //$(.'message').css('display','block');
-            /*$('.dial').each(function(){
-                this.style.display = 'none';
-            });
-            $('.dialcreate').each(function(){
-                this.style.display = 'none';
-            });
-            var id = $($(this).data('dialogid'));
-            id.css('display','block');
-            id.load($(this).data('dialogload'));
-            $($(this).data('dialogcreate')).css('display', 'block');
-            $($(this).data('dialogcreate')).load($(this).data('dialogformload'));
-            messageid = $(this).data('dialog');
-            return false;*/
+    $('.dialog').load(id);
+    $('.dialog').scrollIntoView(true);
     });
 
     $('.message').click(function(){
       $('.message').css('display', 'none');
       $('.dialog').css('display', 'none');
     });
+
+    $(document).on('submit', '.ajax-form', function(){
+        var form = $(this);
+        $.post(form.attr('action'), form.serialize(), function(data){
+            form.html(data);
+        })
+        return false;
+      });
 });

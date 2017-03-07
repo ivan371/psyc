@@ -1,0 +1,16 @@
+{% for m in messages %}
+{% if m.user.is_psycologist%}
+<div class="mess mess_ps">
+{% else %}
+<div class="mess mess_cl">
+{% endif %}
+<p>{{m.content}}</p>
+</div>
+{% endfor %}
+<div class="field_message">
+<form method="post" class="ajax-form" data-dialogcreate="{{chat.id}}"  action="{% url 'message:create' chat.id %}">
+  {% csrf_token %}
+      <textarea name="text"></textarea>
+      <input type="submit" class="button" value="Отправить сообщение">
+</form>
+</div>
