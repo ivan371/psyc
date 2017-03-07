@@ -12,17 +12,23 @@ class Showchat(ListView):
     template_name = "message/showchat.html"
 
     def dispatch(self, request, pk=None, *args, **kwargs):
-        self.chat = 0
-        self.psycologist = get_object_or_404(User, id=pk)
-        if self.psycologist.is_psycologist() and not self.request.user.is_psycologist():
+        self.chat = []
+        self.messages = []
+        if self.request.user.is_psycologist == True:
+            self.ps = self.request.user
+            self.cl = get_object_or_404(User, id=pk)
+        else:
+            self.cl = self.request.user
+            self.ps = get_object_or_404(User, id=pk)
+        if self.ps.is_psycologist() == True and self.cl.is_psycologist() == False:
             try:
                 self.chat = Chat.objects.get(
-                psycologist=self.psycologist.psycologist,
-                client=self.request.user.client)
+                psycologist=self.ps.psycologist,
+                client=self.cl.client)
             except Chat.DoesNotExist:
                 self.chat = Chat(
-                    psycologist=self.psycologist.psycologist,
-                    client=self.request.user.client)
+                    psycologist=self.ps.psycologist,
+                    client=self.cl.client)
                 self.chat.save()
 
             self.messages = Message.objects.filter(char=self.chat)

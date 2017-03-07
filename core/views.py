@@ -5,6 +5,8 @@ from core.models import User, Psycologist
 from core.forms import RegistrationForm, CkEditorForm
 from article.models import Entry
 from django.views import generic
+from django.db.models import Q
+from message.models import Chat
 
 def home(request):
     return render(request, 'core/index.html')
@@ -20,6 +22,19 @@ class Self_room(ListView):
     template_name = 'core/self_room.html'
     model = User
     fields = ('last_name', 'avatar', 'first_name', 'city')
+
+    def dispatch(self, request, pk=None, *args, **kwargs):
+        if self.request.user.is_psycologist == True:
+            self.chats = Chat.objects.filter(psycologist=self.request.user.psycologist)
+        else:
+            self.chats = Chat.objects.filter(client=self.request.user.client)
+        return super(Self_room, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+         context = super(Self_room, self).get_context_data(**kwargs)
+         context['chats'] = self.chats
+         return context
+
 
 class Self_update(UpdateView):
     template_name = 'core/self_update.html'

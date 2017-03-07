@@ -11,7 +11,7 @@
 {% block content %}
 {% if user.is_authenticated%}
 <div class="post col-md-4 col-md-offset-4">
-  <div class="sms">
+  <div class="sms" data-chatid="../message/{{us.id}}">
   <img src = "{% static "img/os.png" %}">
   </div>
 <img class="avatar" src="{{us.avatar.url}}">

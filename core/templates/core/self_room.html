@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load staticfiles%}
 {% block title %}
 Личный кабинет
 {% endblock %}
@@ -8,8 +9,36 @@
 Личный кабиент
 {% endblock %}
 {% block content %}
-<div class="col-md-4  post">
+{% if user.is_authenticated%}
+<div class="col-md-4" >
+  <div class="post">
   <h3>Мои сообщения</h3>
+</div>
+  {% if user.is_psycologist%}
+  {% for chat in chats %}
+  <div class="post">
+    <div class="sms" data-chatid="../message/{{chat.client.user.id}}">
+    <img src = "{% static "img/os.png" %}">
+    </div>
+    <a href="../{{chat.client.user.id}}">
+    <img class="avatar" src="{{chat.client.user.avatar.url}}">
+    </a>
+    <h3>{{chat.client.user.username}}</h3>
+  </div>
+  {% endfor %}
+  {% else %}
+  {% for chat in chats %}
+  <div class="post">
+    <div class="sms" data-chatid="../message/{{chat.psycologist.user.id}}">
+    <img src = "{% static "img/os.png" %}">
+    </div>
+    <a href="../{{chat.psycologist.user.id}}">
+    <img class="avatar" src="{{chat.psycologist.user.avatar.url}}">
+    </a>
+    <h3>{{chat.psycologist.user.username}}</h3>
+  </div>
+  {% endfor %}
+  {% endif %}
 </div>
 <div class="col-md-4  post">
 <h3>Здравствуйте, {{user.username}}</h3>
@@ -31,5 +60,8 @@
  <a href="{% url 'core:create_article' %}">
   <input type="submit" class="button" value="Создать статью"></a>
 </div>
+{% endif %}
+{% else %}
+<h2>Вы не аунтефецированы и не можете просаматривать данную страницу</h2>
 {% endif %}
 {% endblock %}
